@@ -113,8 +113,8 @@ LICENSE:
 #if defined(_MEGA_BOARD_) || defined(_BOARD_AMBER128_) || defined(__AVR_ATmega1280__) || defined(__AVR_ATmega2560__) \
 	|| defined(__AVR_ATmega2561__) || defined(__AVR_ATmega1284P__) || defined(ENABLE_MONITOR)
 	#undef		ENABLE_MONITOR
-	#define		ENABLE_MONITOR
-	static void	RunMonitor(void);
+	//#define		ENABLE_MONITOR
+	//static void	RunMonitor(void);
 #endif
 
 #ifndef EEWE
@@ -309,67 +309,17 @@ LICENSE:
 #endif
 
 
-#if defined(_BOARD_ROBOTX_) || defined(__AVR_AT90USB1287__) || defined(__AVR_AT90USB1286__)
-	#define	UART_BAUD_RATE_LOW			UBRR1L
-	#define	UART_STATUS_REG				UCSR1A
-	#define	UART_CONTROL_REG			UCSR1B
-	#define	UART_ENABLE_TRANSMITTER		TXEN1
-	#define	UART_ENABLE_RECEIVER		RXEN1
-	#define	UART_TRANSMIT_COMPLETE		TXC1
-	#define	UART_RECEIVE_COMPLETE		RXC1
-	#define	UART_DATA_REG				UDR1
-	#define	UART_DOUBLE_SPEED			U2X1
 
-#elif defined(__AVR_ATmega8__) || defined(__AVR_ATmega16__) || defined(__AVR_ATmega32__) \
-	|| defined(__AVR_ATmega8515__) || defined(__AVR_ATmega8535__)
-	/* ATMega8 with one USART */
-	#define	UART_BAUD_RATE_LOW			UBRRL
-	#define	UART_STATUS_REG				UCSRA
-	#define	UART_CONTROL_REG			UCSRB
-	#define	UART_ENABLE_TRANSMITTER		TXEN
-	#define	UART_ENABLE_RECEIVER		RXEN
-	#define	UART_TRANSMIT_COMPLETE		TXC
-	#define	UART_RECEIVE_COMPLETE		RXC
-	#define	UART_DATA_REG				UDR
-	#define	UART_DOUBLE_SPEED			U2X
+#define	UART_BAUD_RATE_LOW			UBRR1L
+#define	UART_STATUS_REG				UCSR1A
+#define	UART_CONTROL_REG			UCSR1B
+#define	UART_ENABLE_TRANSMITTER		TXEN1
+#define	UART_ENABLE_RECEIVER		RXEN1
+#define	UART_TRANSMIT_COMPLETE		TXC1
+#define	UART_RECEIVE_COMPLETE		RXC1
+#define	UART_DATA_REG				UDR1
+#define	UART_DOUBLE_SPEED			U2X1
 
-#elif defined(__AVR_ATmega64__) || defined(__AVR_ATmega128__) || defined(__AVR_ATmega162__) \
-	 || defined(__AVR_ATmega1280__) || defined(__AVR_ATmega2560__) || defined(__AVR_ATmega2561__)
-	/* ATMega with two USART, use UART0 */
-	#define	UART_BAUD_RATE_LOW			UBRR0L
-	#define	UART_STATUS_REG				UCSR0A
-	#define	UART_CONTROL_REG			UCSR0B
-	#define	UART_ENABLE_TRANSMITTER		TXEN0
-	#define	UART_ENABLE_RECEIVER		RXEN0
-	#define	UART_TRANSMIT_COMPLETE		TXC0
-	#define	UART_RECEIVE_COMPLETE		RXC0
-	#define	UART_DATA_REG				UDR0
-	#define	UART_DOUBLE_SPEED			U2X0
-#elif defined(UBRR0L) && defined(UCSR0A) && defined(TXEN0)
-	/* ATMega with two USART, use UART0 */
-	#define	UART_BAUD_RATE_LOW			UBRR0L
-	#define	UART_STATUS_REG				UCSR0A
-	#define	UART_CONTROL_REG			UCSR0B
-	#define	UART_ENABLE_TRANSMITTER		TXEN0
-	#define	UART_ENABLE_RECEIVER		RXEN0
-	#define	UART_TRANSMIT_COMPLETE		TXC0
-	#define	UART_RECEIVE_COMPLETE		RXC0
-	#define	UART_DATA_REG				UDR0
-	#define	UART_DOUBLE_SPEED			U2X0
-#elif defined(UBRRL) && defined(UCSRA) && defined(UCSRB) && defined(TXEN) && defined(RXEN)
-	//* catch all
-	#define	UART_BAUD_RATE_LOW			UBRRL
-	#define	UART_STATUS_REG				UCSRA
-	#define	UART_CONTROL_REG			UCSRB
-	#define	UART_ENABLE_TRANSMITTER		TXEN
-	#define	UART_ENABLE_RECEIVER		RXEN
-	#define	UART_TRANSMIT_COMPLETE		TXC
-	#define	UART_RECEIVE_COMPLETE		RXC
-	#define	UART_DATA_REG				UDR
-	#define	UART_DOUBLE_SPEED			U2X
-#else
-	#error "no UART definition for MCU available"
-#endif
 
 
 

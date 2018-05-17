@@ -35,7 +35,7 @@
 
 
 # MCU name
-#MCU = atmega128
+MCU = atmega32u4
 
 
 # Processor frequency.
@@ -43,7 +43,7 @@
 #     processor frequency. You can then use this symbol in your source code to 
 #     calculate timings. Do NOT tack on a 'UL' at the end, this will be done
 #     automatically to create a 32-bit value in your source code.
-#F_CPU = 16000000
+F_CPU = 16000000
 
 
 # Bootloader
@@ -52,7 +52,8 @@
 # 0xFC00*2=0x1F800 for ATmega128  1024 words Boot Size
 # 0xF800*2=0x1F000 for ATmega1280
 # 0xF000*2=0x1E000 for ATmega1280
-#BOOTLOADER_ADDRESS = 1E000
+# 0x3C00*2=0x7800 for ATmega32u4 1024 words Boot Size
+BOOTLOADER_ADDRESS = 7800 
 
 
 # Output format. (can be srec, ihex, binary)
