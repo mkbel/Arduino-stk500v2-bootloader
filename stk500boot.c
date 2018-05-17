@@ -304,6 +304,8 @@ LICENSE:
 	#define SIGNATURE_BYTES  0x1e9405
 #elif defined (__AVR_AT90USB1287__)
 	#define SIGNATURE_BYTES  0x1e9782
+#elif defined (__AVR_ATmega32U4__)
+    #define SIGNATURE_BYTES 0x1e9587
 #else
 	#error "no signature definition for MCU available"
 #endif
