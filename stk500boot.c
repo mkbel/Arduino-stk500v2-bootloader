@@ -15,10 +15,7 @@ Description: add timeout feature like previous Wiring bootloader
 
 DESCRIPTION:
     This program allows an AVR with bootloader capabilities to
-    read/write its own Flash/EEprom. To enter Programming mode
-    an input pin is checked. If this pin is pulled low, programming mode
-    is entered. If not, normal execution is done from $0000
-    "reset" vector in Application area.
+    read/write its own Flash/EEprom.
     Size fits into a 1024 word bootloader section
 	when compiled with avr-gcc 4.1
 	(direct replace on Wiring Board without fuse setting changed)
