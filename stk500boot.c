@@ -145,80 +145,11 @@ LICENSE:
 //************************************************************************
 #define		BLINK_LED_WHILE_WAITING
 
-#ifdef _MEGA_BOARD_
-	#define PROGLED_PORT	PORTB
-	#define PROGLED_DDR		DDRB
-	#define PROGLED_PIN		PINB7
-#elif defined( _BOARD_AMBER128_ )
-	//*	this is for the amber 128 http://www.soc-robotics.com/
-	//*	onbarod led is PORTE4
-	#define PROGLED_PORT	PORTD
-	#define PROGLED_DDR		DDRD
-	#define PROGLED_PIN		PINE7
-#elif defined( _CEREBOTPLUS_BOARD_ ) || defined(_CEREBOT_II_BOARD_)
-	//*	this is for the Cerebot 2560 board and the Cerebot-ii
-	//*	onbarod leds are on PORTE4-7
-	#define PROGLED_PORT	PORTE
-	#define PROGLED_DDR		DDRE
-	#define PROGLED_PIN		PINE7
-#elif defined( _PENGUINO_ )
-	//*	this is for the Penguino
-	//*	onbarod led is PORTE4
-	#define PROGLED_PORT	PORTC
-	#define PROGLED_DDR		DDRC
-	#define PROGLED_PIN		PINC6
-#elif defined( _ANDROID_2561_ ) || defined( __AVR_ATmega2561__ )
-	//*	this is for the Boston Android 2561
-	//*	onbarod led is PORTE4
-	#define PROGLED_PORT	PORTA
-	#define PROGLED_DDR		DDRA
-	#define PROGLED_PIN		PINA3
-#elif defined( _BOARD_MEGA16 )
-	//*	onbarod led is PORTA7
-	#define PROGLED_PORT	PORTA
-	#define PROGLED_DDR		DDRA
-	#define PROGLED_PIN		PINA7
-	#define UART_BAUDRATE_DOUBLE_SPEED 0
 
-#elif defined( _BOARD_BAHBOT_ )
-	//*	dosent have an onboard LED but this is what will probably be added to this port
-	#define PROGLED_PORT	PORTB
-	#define PROGLED_DDR		DDRB
-	#define PROGLED_PIN		PINB0
+#define PROGLED_PORT	PORTB
+#define PROGLED_DDR		DDRB
+#define PROGLED_PIN		PINB0
 
-#elif defined( _BOARD_ROBOTX_ )
-	#define PROGLED_PORT	PORTB
-	#define PROGLED_DDR		DDRB
-	#define PROGLED_PIN		PINB6
-#elif defined( _BOARD_CUSTOM1284_BLINK_B0_ )
-	#define PROGLED_PORT	PORTB
-	#define PROGLED_DDR		DDRB
-	#define PROGLED_PIN		PINB0
-#elif defined( _BOARD_CUSTOM1284_ )
-	#define PROGLED_PORT	PORTD
-	#define PROGLED_DDR		DDRD
-	#define PROGLED_PIN		PIND5
-#elif defined( _AVRLIP_ )
-	#define PROGLED_PORT	PORTB
-	#define PROGLED_DDR		DDRB
-	#define PROGLED_PIN		PINB5
-#elif defined( _BOARD_STK500_ )
-	#define PROGLED_PORT	PORTA
-	#define PROGLED_DDR		DDRA
-	#define PROGLED_PIN		PINA7
-#elif defined( _BOARD_STK502_ )
-	#define PROGLED_PORT	PORTB
-	#define PROGLED_DDR		DDRB
-	#define PROGLED_PIN		PINB5
-#elif defined( _BOARD_STK525_ )
-	#define PROGLED_PORT	PORTB
-	#define PROGLED_DDR		DDRB
-	#define PROGLED_PIN		PINB7
-#else
-	#define PROGLED_PORT	PORTG
-	#define PROGLED_DDR		DDRG
-	#define PROGLED_PIN		PING2
-#endif
 
 
 
