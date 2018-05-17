@@ -172,13 +172,8 @@ LICENSE:
 /*
  *  Enable (1) or disable (0) USART double speed operation
  */
-#ifndef UART_BAUDRATE_DOUBLE_SPEED
-	#if defined (__AVR_ATmega32__)
-		#define UART_BAUDRATE_DOUBLE_SPEED 0
-	#else
-		#define UART_BAUDRATE_DOUBLE_SPEED 1
-	#endif
-#endif
+#define UART_BAUDRATE_DOUBLE_SPEED 0
+
 
 /*
  * HW and SW version, reported to AVRISP, must match version of AVRStudio
