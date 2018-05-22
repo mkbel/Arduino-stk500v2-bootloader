@@ -772,7 +772,7 @@ int main(void)
 
 				case CMD_LEAVE_PROGMODE_ISP:
 					isLeave	=	1;
-					//*	fall thru
+					//@suppress("No break at end of case")
 
 				case CMD_SET_PARAMETER:
 				case CMD_ENTER_PROGMODE_ISP:
