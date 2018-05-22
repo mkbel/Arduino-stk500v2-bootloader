@@ -1,6 +1,6 @@
 Build dependencies:
 make
-gcc-avr
+gcc-avr (5.4.0 tested to work)
 
 For Eclipse editing install AVR Eclipse Plugin from:
 http://avr-eclipse.sourceforge.net/updatesite
