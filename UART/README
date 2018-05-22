@@ -1,0 +1,6 @@
+Build dependencies:
+make
+gcc-avr
+
+For Eclipse editing install AVR Eclipse Plugin from:
+http://avr-eclipse.sourceforge.net/updatesite
