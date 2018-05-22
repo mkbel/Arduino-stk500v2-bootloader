@@ -290,7 +290,9 @@ LICENSE:
  * function prototypes
  */
 static void sendchar(char c);
+#ifdef ENABLE_MONITOR
 static unsigned char recchar(void);
+#endif //ifdef ENABLE_MONITOR
 
 /*
  * since this bootloader is not linked against the avr-gcc crt1 functions,
@@ -353,7 +355,7 @@ static int	Serial_Available(void)
 	return(UART_STATUS_REG & (1 << UART_RECEIVE_COMPLETE));	// wait for data
 }
 
-
+#ifdef ENABLE_MONITOR
 //*****************************************************************************
 /*
  * Read single byte from USART, block if no data available
@@ -366,6 +368,7 @@ static unsigned char recchar(void)
 	}
 	return UART_DATA_REG;
 }
+#endif //ifdef ENABLE_MONITOR
 
 #define	MAX_TIME_COUNT	(F_CPU >> 1)
 //*****************************************************************************
