@@ -1,4 +1,5 @@
 /obj
+/Documentation
 *.bin
 *.eep
 *.elf
