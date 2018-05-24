@@ -188,20 +188,10 @@ static void SetupHardware(void)
 	MCUCR = (1 << IVCE);
 	MCUCR = (1 << IVSEL);
 
-	/* Initialize the USB and other board hardware drivers */
+	/* Initialize the USB*/
 	USB_Init();
-	LEDs_Init();
-
-	/* Bootloader active LED toggle timer initialization */
-	TIMSK1 = (1 << TOIE1);
-	TCCR1B = ((1 << CS11) | (1 << CS10));
 }
 
-/** ISR to periodically toggle the LEDs on the board to indicate that the bootloader is active. */
-ISR(TIMER1_OVF_vect, ISR_BLOCK)
-{
-	LEDs_ToggleLEDs(LEDS_LED1 | LEDS_LED2);
-}
 
 /** Event handler for the USB_ConfigurationChanged event. This configures the device's endpoints ready
  *  to relay data to and from the attached USB host.
