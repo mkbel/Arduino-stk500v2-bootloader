@@ -446,9 +446,6 @@ static void CDC_Task(void)
 	processCommand();
 	replyMsg();
 
-
-
-}
 #if AVR109
 	/* Read in the bootloader command (first byte sent from host) */
 	uint8_t Command = FetchNextCommandByte();

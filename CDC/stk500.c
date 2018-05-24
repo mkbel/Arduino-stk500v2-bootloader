@@ -7,8 +7,9 @@
 
 #include "stk500.h"
 #include "command.h"
-#include <avr/boot.h>
 #include "write.h"
+#include <avr/boot.h>
+#include <avr/pgmspace.h>
 
 //************************************************************************
 //* LED on pin "PROGLED_PIN" on port "PROGLED_PORT"
@@ -527,11 +528,11 @@ void replyMsg(void)
     while ( msgLength )
     {
         c   =   *p++;
-        sendchar(c);
+        WriteNextResponseByte(c);
         checksum ^=c;
         msgLength--;
     }
-    sendchar(checksum);
+    WriteNextResponseByte(checksum);
     seqNum++;
 
 #ifndef REMOVE_BOOTLOADER_LED
