@@ -35,65 +35,8 @@
 
 #include "BootloaderAPI.h"
 
-static bool IsPageAddressValid(const uint32_t Address)
-{
-	/* Determine if the given page address is correctly aligned to the
-	   start of a flash page. */
-	bool PageAddressIsAligned = !(Address & (SPM_PAGESIZE - 1));
-
-	return (Address < BOOT_START_ADDR) && PageAddressIsAligned;
-}
-
-void BootloaderAPI_ErasePage(const uint32_t Address)
-{
-	if (! IsPageAddressValid(Address))
-		return;
-
-	ATOMIC_BLOCK(ATOMIC_RESTORESTATE)
-	{
-		boot_page_erase_safe(Address);
-		boot_spm_busy_wait();
-		boot_rww_enable();
-	}
-}
-
-void BootloaderAPI_WritePage(const uint32_t Address)
-{
-	if (! IsPageAddressValid(Address))
-		return;
-
-	ATOMIC_BLOCK(ATOMIC_RESTORESTATE)
-	{
-		boot_page_write_safe(Address);
-		boot_spm_busy_wait();
-		boot_rww_enable();
-	}
-}
-
-void BootloaderAPI_FillWord(const uint32_t Address, const uint16_t Word)
-{
-	boot_page_fill_safe(Address, Word);
-}
-
-uint8_t BootloaderAPI_ReadSignature(const uint16_t Address)
-{
-	return boot_signature_byte_get(Address);
-}
 
 uint8_t BootloaderAPI_ReadFuse(const uint16_t Address)
 {
 	return boot_lock_fuse_bits_get(Address);
-}
-
-uint8_t BootloaderAPI_ReadLock(void)
-{
-	return boot_lock_fuse_bits_get(GET_LOCK_BITS);
-}
-
-void BootloaderAPI_WriteLock(const uint8_t LockBits)
-{
-	ATOMIC_BLOCK(ATOMIC_RESTORESTATE)
-	{
-		boot_lock_bits_set_safe(LockBits);
-	}
 }

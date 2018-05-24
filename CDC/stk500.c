@@ -13,6 +13,7 @@
 
 #define REMOVE_BOOTLOADER_LED
 #define REMOVE_PROGRAM_LOCK_BIT_SUPPORT
+#define REMOVE_CMD_SPI_MULTI
 
 //************************************************************************
 //* LED on pin "PROGLED_PIN" on port "PROGLED_PORT"
