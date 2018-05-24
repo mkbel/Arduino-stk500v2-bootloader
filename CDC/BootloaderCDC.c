@@ -152,6 +152,13 @@ static void SetupHardware(void)
 	MCUCR = (1 << IVCE);
 	MCUCR = (1 << IVSEL);
 
+#ifndef REMOVE_BOOTLOADER_LED
+    /* PROG_PIN pulled low, indicate with LED that bootloader is active */
+    PROGLED_DDR     |=  (1<<PROGLED_PIN);
+    PROGLED_PORT    &=  ~(1<<PROGLED_PIN);  // active low LED ON
+//  PROGLED_PORT    |=  (1<<PROGLED_PIN);   // active high LED ON
+#endif //def REMOVE_BOOTLOADER_LED
+
 	/* Initialize the USB*/
 	USB_Init();
 }
