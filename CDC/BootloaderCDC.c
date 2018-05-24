@@ -147,9 +147,6 @@ int main(void)
 	/* Setup hardware required for the bootloader */
 	SetupHardware();
 
-	/* Turn on first LED on the board to indicate that the bootloader has started */
-	LEDs_SetAllLEDs(LEDS_LED1);
-
 	/* Enable global interrupts so that the USB stack can function */
 	GlobalInterruptEnable();
 
@@ -219,9 +216,6 @@ void EVENT_USB_Device_ControlRequest(void)
 	{
 		return;
 	}
-
-	/* Activity - toggle indicator LEDs */
-	LEDs_ToggleLEDs(LEDS_LED1 | LEDS_LED2);
 
 	/* Process CDC specific control requests */
 	switch (USB_ControlRequest.bRequest)
