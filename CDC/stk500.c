@@ -11,6 +11,8 @@
 #include <avr/boot.h>
 #include <avr/pgmspace.h>
 
+#define REMOVE_BOOTLOADER_LED
+
 //************************************************************************
 //* LED on pin "PROGLED_PIN" on port "PROGLED_PORT"
 //* indicates that bootloader is active
