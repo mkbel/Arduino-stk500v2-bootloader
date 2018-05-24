@@ -35,6 +35,8 @@
 
 #define  INCLUDE_FROM_BOOTLOADERCDC_C
 #include "BootloaderCDC.h"
+#include "stk500.h"
+#include "write.h"
 
 /** Contains the current baud rate and other settings of the first virtual serial port. This must be retained as some
  *  operating systems will not open the port unless the settings can be set successfully.
@@ -405,7 +407,7 @@ static uint8_t FetchNextCommandByte(void)
  *
  *  \param[in] Response  Next response byte to send to the host
  */
-static void WriteNextResponseByte(const uint8_t Response)
+void WriteNextResponseByte(const uint8_t Response)
 {
 	/* Select the IN endpoint so that the next data byte can be written */
 	Endpoint_SelectEndpoint(CDC_TX_EPADDR);
@@ -426,6 +428,8 @@ static void WriteNextResponseByte(const uint8_t Response)
 	Endpoint_Write_8(Response);
 }
 
+
+
 /** Task to read in AVR109 commands from the CDC data OUT endpoint, process them, perform the required actions
  *  and send the appropriate response back to the host.
  */
@@ -438,6 +442,14 @@ static void CDC_Task(void)
 	if (!(Endpoint_IsOUTReceived()))
 	  return;
 
+	if (ST_PROCESS != parseMsg(FetchNextCommandByte())) return;
+	processCommand();
+	replyMsg();
+
+
+
+}
+#if AVR109
 	/* Read in the bootloader command (first byte sent from host) */
 	uint8_t Command = FetchNextCommandByte();
 
@@ -619,6 +631,7 @@ static void CDC_Task(void)
 		/* Unknown (non-sync) command, return fail code */
 		WriteNextResponseByte('?');
 	}
+#endif //if AVR109
 
 	/* Select the IN endpoint */
 	Endpoint_SelectEndpoint(CDC_TX_EPADDR);
