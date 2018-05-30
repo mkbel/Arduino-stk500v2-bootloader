@@ -8,8 +8,6 @@
 #ifndef STK500_H_
 #define STK500_H_
 
-#define ST_PROCESS 7
-
 //#define REMOVE_BOOTLOADER_LED
 #define REMOVE_PROGRAM_LOCK_BIT_SUPPORT
 //#define REMOVE_CMD_SPI_MULTI
@@ -25,8 +23,8 @@
 #define PROGLED_DDR     DDRD
 #define PROGLED_PIN     PIND5
 
-unsigned char parseMsg(unsigned char c);
 void processCommand(void);
+unsigned char msgParsed(unsigned char c);
 void replyMsg(void);
 
 

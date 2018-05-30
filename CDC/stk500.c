@@ -22,6 +22,7 @@
 #define ST_GET_TOKEN    4
 #define ST_GET_DATA     5
 #define ST_GET_CHECK    6
+#define ST_PROCESS      7
 
 /*
  * Signature bytes are not available in avr-gcc io_xxx.h
@@ -89,10 +90,11 @@ static unsigned char msgBuffer[285];
 
 /**
  * @brief Parse incoming message
- * @param c character received
- * @return msgParseState
+ * @param c character received to be parsed
+ * @retval 1 Valid message parsed
+ * @retval 0 Incomplete or invalid message
  */
-unsigned char parseMsg(unsigned char c)
+unsigned char msgParsed(unsigned char c)
 {
     static unsigned int  ii = 0;
     static unsigned char msgParseState = ST_START;
@@ -173,7 +175,7 @@ unsigned char parseMsg(unsigned char c)
          }
          break;
     }   //  switch
-    return msgParseState;
+    return (ST_PROCESS == msgParseState) ? 1 : 0;
 }
 
 /**
