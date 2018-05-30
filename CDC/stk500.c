@@ -97,6 +97,7 @@ unsigned char parseMsg(unsigned char c)
     static unsigned int  ii = 0;
     static unsigned char msgParseState = ST_START;
     static unsigned char checksum = 0;
+    if (ST_PROCESS == msgParseState) msgParseState = ST_START;
 
     switch (msgParseState)
     {
