@@ -186,10 +186,12 @@ unsigned char msgParsed(unsigned char c)
 
 /**
  * @brief Process the STK500 commands, see Atmel Appnote AVR068
+ * @retval 1 Leave bootloader
+ * @retval 0 Do not leave bootloader
  */
-void processCommand(void)
+unsigned char processCommand(void)
 {
-    static unsigned char isLeave = 0;
+    unsigned char isLeave = 0;
     static address_t eraseAddress = 0;
     static address_t address = 0;
     switch (msgBuffer[0])
@@ -497,6 +499,7 @@ void processCommand(void)
                 msgBuffer[1]    =   STATUS_CMD_FAILED;
                 break;
         }
+    return isLeave;
 }
 /**
  * @brief Send answer message back

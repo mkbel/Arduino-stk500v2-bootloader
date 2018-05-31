@@ -294,8 +294,8 @@ static void CDC_Task(void)
 	if (!(Endpoint_IsOUTReceived()))
 	  return;
 
-	processCommand();
 	if (!msgParsed(FetchNextCommandByte())) return;
+	RunBootloader = !processCommand();
 	replyMsg();
 
 	/* Select the IN endpoint */

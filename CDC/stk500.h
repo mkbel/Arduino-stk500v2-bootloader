@@ -18,8 +18,8 @@
 #define PROGLED_DDR     DDRD
 #define PROGLED_PIN     PIND5
 
-void processCommand(void);
 unsigned char msgParsed(unsigned char c);
+unsigned char processCommand(void);
 void replyMsg(void);
 
 
