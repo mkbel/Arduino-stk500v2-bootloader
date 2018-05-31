@@ -11,6 +11,12 @@
 #include <avr/boot.h>
 #include <avr/pgmspace.h>
 
+//#define REMOVE_BOOTLOADER_LED
+#define REMOVE_PROGRAM_LOCK_BIT_SUPPORT
+//#define REMOVE_CMD_SPI_MULTI
+
+
+
 
 /*
  * States used in the receive state machine
